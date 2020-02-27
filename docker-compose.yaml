@@ -10,3 +10,11 @@ services:
     - "MINIO_SECRET_KEY=dalongapp"
     volumes: 
     - "./data:/data"
+  gateway2: 
+    image: minio/minio
+    command:  gateway s3 http://gateway:9000
+    ports: 
+    - "9001:9000"
+    environment:
+    - "MINIO_ACCESS_KEY=dalongapp"
+    - "MINIO_SECRET_KEY=dalongapp"
